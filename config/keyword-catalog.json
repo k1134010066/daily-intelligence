@@ -1,0 +1,7 @@
+[
+  {"id":"incense","label":"线香","description":"线香产品、使用体验与香文化内容","keywords":["线香","中式线香","线香推荐","线香文化"],"builtin":true},
+  {"id":"chinese-aesthetics","label":"中式美学","description":"新中式视觉、空间、器物与生活方式","keywords":["中式美学","新中式美学","中式审美","中式设计"],"builtin":true},
+  {"id":"oriental-aesthetics","label":"东方美学","description":"东方审美、生活美学与设计表达","keywords":["东方美学","东方审美","东方生活美学","东方美学设计"],"builtin":true},
+  {"id":"ai","label":"AI","description":"AI 教程、行业新闻与近期资讯","keywords":["AI","AI教程","AI新闻","AI最新资讯"],"builtin":true},
+  {"id":"codex","label":"Codex","description":"Codex 教程、技巧与产品动态","keywords":["Codex","Codex教程","Codex使用技巧","Codex最新资讯"],"builtin":true}
+]

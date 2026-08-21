@@ -1,0 +1,18 @@
+[Unit]
+Description=Daily Intelligence web and scheduler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=daily-intelligence
+WorkingDirectory=/opt/daily-intelligence
+EnvironmentFile=/opt/daily-intelligence/config/production.env
+ExecStart=/usr/bin/node /opt/daily-intelligence/server.mjs
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

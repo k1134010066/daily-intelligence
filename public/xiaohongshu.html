@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="小红书 MCP 内容工作台预览" />
+    <title>小红书运营台 · 预览版</title>
+    <link rel="stylesheet" href="/xiaohongshu.css" />
+  </head>
+  <body class="xhs-page">
+    <div class="xhs-shell">
+      <aside class="xhs-sidebar" aria-label="小红书运营台导航">
+        <div class="xhs-brand">
+          <span class="xhs-brand-mark">✦</span>
+          <span><strong>小红书</strong><small>Creator Console</small></span>
+        </div>
+
+        <div class="xhs-nav-label">WORKSPACE</div>
+        <nav class="xhs-nav">
+          <button class="xhs-nav-item active" data-section="overview"><span>⌂</span>工作台</button>
+          <button class="xhs-nav-item" data-section="compose"><span>＋</span>内容创作</button>
+          <button class="xhs-nav-item" data-section="insights"><span>◌</span>数据洞察</button>
+          <button class="xhs-nav-item" data-section="settings"><span>⚙</span>连接设置</button>
+        </nav>
+
+        <div class="xhs-sidebar-spacer"></div>
+        <div class="xhs-bridge-card">
+          <div class="xhs-bridge-head"><span class="xhs-status-dot" id="sidebarStatusDot"></span><span>MCP Bridge</span><strong id="sidebarStatusText">检测中</strong></div>
+          <p>localhost:18060</p>
+          <button class="xhs-link-button" id="sidebarConnect">重新连接 <span>↗</span></button>
+        </div>
+        <div class="xhs-user-card"><span class="xhs-user-avatar">张</span><span><strong>张晓明</strong><small>Creator account</small></span><span class="xhs-more">•••</span></div>
+      </aside>
+
+      <main class="xhs-main">
+        <header class="xhs-topbar">
+          <div class="xhs-breadcrumb"><span>工作台</span><b>/</b><strong>内容运营</strong></div>
+          <div class="xhs-top-actions"><span class="xhs-preview-badge">PREVIEW MODE</span><button class="xhs-icon-button" aria-label="通知">♧<i></i></button><span class="xhs-date">2026.08.19</span></div>
+        </header>
+
+        <section class="xhs-hero">
+          <div>
+            <p class="xhs-kicker">WEDNESDAY · AUG 19, 2026</p>
+            <h1>把灵感，变成一篇好笔记。</h1>
+            <p class="xhs-hero-copy">从选题、配图到发布预览，轻松管理你的每一次内容表达。</p>
+          </div>
+          <div class="xhs-hero-actions"><button class="xhs-secondary-button" id="checkConnection">检查连接</button><button class="xhs-primary-button" id="jumpCompose">＋ 新建笔记</button></div>
+        </section>
+
+        <section class="xhs-metrics" aria-label="运营数据概览">
+          <article class="xhs-metric-card"><span class="xhs-metric-label">今日阅读</span><strong>12.8K</strong><small class="positive">↗ 18.6% <em>vs. 昨日</em></small><span class="xhs-sparkline pink"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></article>
+          <article class="xhs-metric-card"><span class="xhs-metric-label">收藏互动</span><strong>1,204</strong><small class="positive">↗ 9.2% <em>vs. 昨日</em></small><span class="xhs-sparkline orange"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></article>
+          <article class="xhs-metric-card"><span class="xhs-metric-label">待发布</span><strong>03</strong><small class="neutral">2 篇图文 · 1 条视频</small><span class="xhs-metric-icon">◫</span></article>
+          <article class="xhs-metric-card"><span class="xhs-metric-label">MCP 状态</span><strong class="metric-status" id="metricStatus">连接中</strong><small class="neutral" id="metricTools">等待服务响应</small><span class="xhs-online-pill" id="metricPill"><i></i> Local</span></article>
+        </section>
+
+        <section class="xhs-content-grid" id="composeSection">
+          <article class="xhs-panel xhs-composer-panel">
+            <div class="xhs-panel-heading"><div><p class="xhs-section-eyebrow">CREATE</p><h2>写一篇新笔记</h2></div><span class="xhs-draft-label">未保存草稿</span></div>
+            <label class="xhs-field"><span>标题 <em id="titleCount">0 / 20</em></span><input id="noteTitle" maxlength="20" placeholder="输入一个让人想点开的标题" value="今天也要好好生活呀 · 我的周末记录" /></label>
+            <label class="xhs-field"><span>正文</span><textarea id="noteContent" rows="7" placeholder="分享你的想法、经验或生活片段…">周末的快乐很简单：一杯咖啡，一段散步的时间，还有把喜欢的事情慢慢做完。
+
+你最近有什么让自己开心的小事？</textarea></label>
+            <div class="xhs-field"><span>话题标签</span><div class="xhs-tags" id="noteTags"><button class="xhs-tag active" type="button">#周末碎片</button><button class="xhs-tag" type="button">#生活记录</button><button class="xhs-tag" type="button">#松弛感</button><button class="xhs-add-tag" type="button">＋ 添加</button></div></div>
+            <div class="xhs-field"><span>配图 <em>建议 1–9 张</em></span><div class="xhs-media-row" id="mediaRow"><label class="xhs-upload-card"><input id="mediaInput" type="file" accept="image/*" multiple /><span>＋</span><small>添加图片</small></label><button class="xhs-media-card selected" type="button" data-media="/assets/thumb-camp.svg"><img src="/assets/thumb-camp.svg" alt="露营图片预览" /><i>✓</i></button><button class="xhs-media-card" type="button" data-media="/assets/thumb-skincare.svg"><img src="/assets/thumb-skincare.svg" alt="护肤图片预览" /></button><button class="xhs-media-card" type="button" data-media="/assets/thumb-workwear.svg"><img src="/assets/thumb-workwear.svg" alt="穿搭图片预览" /></button></div></div>
+            <div class="xhs-composer-footer"><span class="xhs-preview-note">预览模式 · 不会真实发布</span><div><button class="xhs-secondary-button" id="saveDraft">保存草稿</button><button class="xhs-primary-button" id="previewNote">预览发布 ↗</button></div></div>
+          </article>
+
+          <div class="xhs-side-stack">
+            <article class="xhs-panel xhs-account-panel">
+              <div class="xhs-panel-heading"><div><p class="xhs-section-eyebrow">ACCOUNT</p><h2>账号状态</h2></div><span class="xhs-live-label" id="accountState"><i></i> 检测中</span></div>
+              <div class="xhs-account-main"><div class="xhs-account-avatar">张</div><div><strong>张晓明</strong><p id="accountDescription">正在检查小红书登录状态</p></div></div>
+              <button class="xhs-outline-button" id="checkLogin">检查登录状态 <span>↗</span></button>
+            </article>
+            <article class="xhs-panel xhs-quick-panel">
+              <div class="xhs-panel-heading"><div><p class="xhs-section-eyebrow">QUICK ACTIONS</p><h2>快捷动作</h2></div></div>
+              <div class="xhs-quick-list"><button class="xhs-quick-item" data-action="search"><span class="quick-icon peach">⌕</span><span><strong>搜索笔记</strong><small>发现新的选题灵感</small></span><b>→</b></button><button class="xhs-quick-item" data-action="feeds"><span class="quick-icon lavender">◈</span><span><strong>获取推荐</strong><small>查看首页热门内容</small></span><b>→</b></button><button class="xhs-quick-item" data-action="notifications"><span class="quick-icon mint">♧</span><span><strong>查看通知</strong><small>了解评论与互动</small></span><b>→</b></button></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="xhs-panel xhs-recent-panel" id="insightsSection">
+          <div class="xhs-panel-heading"><div><p class="xhs-section-eyebrow">RECENT CONTENT</p><h2>最近内容</h2></div><button class="xhs-text-button" id="viewAll">查看全部 <span>→</span></button></div>
+          <div class="xhs-recent-list">
+            <article class="xhs-content-item"><img src="/assets/thumb-camp.svg" alt="露营新手图片" /><div class="xhs-content-info"><div><span class="xhs-content-type">图文</span><span class="xhs-content-time">今天 09:18</span></div><h3>周末去露营，真的会让人心情变好</h3><p>#户外生活　#周末碎片</p></div><div class="xhs-content-stats"><span>♡ <strong>2,184</strong></span><span>☆ <strong>342</strong></span><span>◌ <strong>86</strong></span></div><span class="xhs-content-state published">已发布</span></article>
+            <article class="xhs-content-item"><img src="/assets/thumb-skincare.svg" alt="护肤图片" /><div class="xhs-content-info"><div><span class="xhs-content-type">图文</span><span class="xhs-content-time">昨天 18:40</span></div><h3>最近空瓶的 5 件夏日护肤好物</h3><p>#护肤分享　#夏日好物</p></div><div class="xhs-content-stats"><span>♡ <strong>1,826</strong></span><span>☆ <strong>291</strong></span><span>◌ <strong>64</strong></span></div><span class="xhs-content-state published">已发布</span></article>
+            <article class="xhs-content-item"><img src="/assets/thumb-workwear.svg" alt="通勤穿搭图片" /><div class="xhs-content-info"><div><span class="xhs-content-type draft">草稿</span><span class="xhs-content-time">昨天 15:22</span></div><h3>不费力的通勤穿搭，照着穿就好</h3><p>#职场穿搭　#通勤日常</p></div><div class="xhs-content-stats muted"><span>—</span><span>—</span><span>—</span></div><span class="xhs-content-state draft">待编辑</span></article>
+          </div>
+        </section>
+
+        <footer class="xhs-footer"><span>小红书运营台 · 简单、专注、有效</span><span>Powered by <strong>xiaohongshu-mcp</strong></span></footer>
+      </main>
+    </div>
+
+    <div class="xhs-modal-backdrop" id="actionModal" hidden>
+      <article class="xhs-action-modal" role="dialog" aria-modal="true" aria-labelledby="actionModalTitle">
+        <button class="xhs-modal-close" id="closeAction" aria-label="关闭快捷动作">×</button>
+        <p class="xhs-section-eyebrow" id="actionModalEyebrow">QUICK ACTION</p>
+        <h2 id="actionModalTitle">快捷动作</h2>
+        <p class="xhs-action-hint" id="actionModalHint">从小红书 MCP 读取数据。</p>
+        <form class="xhs-action-search" id="actionSearchForm" hidden>
+          <input id="actionSearchInput" type="search" placeholder="输入关键词，例如：周末露营" autocomplete="off" />
+          <button class="xhs-primary-button" type="submit">搜索</button>
+        </form>
+        <div class="xhs-action-state" id="actionState"></div>
+        <div class="xhs-action-results" id="actionResults"></div>
+      </article>
+    </div>
+
+    <div class="xhs-modal-backdrop" id="detailModal" hidden>
+      <article class="xhs-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="xhs-modal-close" id="closeDetail" aria-label="关闭笔记详情">×</button>
+        <div class="xhs-detail-head">
+          <div class="xhs-detail-cover"><img id="detailCover" src="/assets/thumb-camp.svg" alt="笔记封面" referrerpolicy="no-referrer" /></div>
+          <div class="xhs-detail-heading">
+            <p class="xhs-section-eyebrow">NOTE DETAIL</p>
+            <h2 id="detailTitle">笔记详情</h2>
+            <p id="detailAuthor" class="xhs-detail-author">作者信息</p>
+            <div class="xhs-detail-tags"><span id="detailType">图文</span><span id="detailIpLocation"></span></div>
+          </div>
+        </div>
+        <div class="xhs-detail-metrics" id="detailMetrics"></div>
+        <div class="xhs-detail-time-row"><span id="detailPublishedLabel">发布时间</span><strong id="detailPublishedAt">—</strong></div>
+        <p class="xhs-detail-description" id="detailDescription">暂无正文描述</p>
+        <div class="xhs-detail-gallery" id="detailGallery"></div>
+        <section class="xhs-comments-block" aria-labelledby="detailCommentsTitle">
+          <div class="xhs-comments-heading"><h3 id="detailCommentsTitle">评论</h3><span id="detailCommentCount">0 条</span></div>
+          <div class="xhs-comments-list" id="detailComments"></div>
+        </section>
+      </article>
+    </div>
+
+    <div class="xhs-modal-backdrop" id="previewModal" hidden>
+      <article class="xhs-preview-modal" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+        <button class="xhs-modal-close" id="closePreview" aria-label="关闭预览">×</button>
+        <div class="xhs-preview-phone"><div class="xhs-phone-top"><span>9:41</span><span>● ● ▰</span></div><div class="xhs-phone-cover"><img id="previewImage" src="/assets/thumb-camp.svg" alt="笔记配图" /></div><div class="xhs-phone-body"><strong id="previewModalTitle">今天也要好好生活呀 · 我的周末记录</strong><p id="previewModalCopy"></p><div id="previewModalTags" class="xhs-phone-tags"></div><div class="xhs-phone-author"><span class="xhs-account-avatar small">张</span><span>张晓明 · 刚刚</span><button>♡</button></div></div></div>
+        <div class="xhs-preview-copy"><p class="xhs-section-eyebrow">PUBLISH PREVIEW</p><h2>发布前再看一眼</h2><p>这是一个仅供预览的模拟页面。点击“发布”不会向小红书发送内容。</p><button class="xhs-primary-button" id="closePreviewAction">返回编辑</button></div>
+      </article>
+    </div>
+    <div class="xhs-toast" id="xhsToast" role="status" aria-live="polite"></div>
+    <script type="module" src="/xiaohongshu.js"></script>
+  </body>
+</html>

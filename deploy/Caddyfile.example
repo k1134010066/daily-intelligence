@@ -1,0 +1,7 @@
+# Replace with a domain whose DNS A/AAAA record points to this server.
+daily.example.com {
+    encode gzip
+
+    # Caddy terminates HTTPS and forwards only to the local Node service.
+    reverse_proxy 127.0.0.1:4173
+}

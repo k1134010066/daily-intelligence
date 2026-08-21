@@ -1,0 +1,44 @@
+{
+  "keywords": [
+    "线香",
+    "中式线香",
+    "沉香",
+    "线香推荐",
+    "线香文化",
+    "中式美学",
+    "新中式美学",
+    "中式审美",
+    "中式设计"
+  ],
+  "selectedTracks": [
+    "incense",
+    "chinese-aesthetics"
+  ],
+  "scheduleTimes": [
+    "07:00",
+    "12:00",
+    "18:00"
+  ],
+  "enabledPlatforms": [
+    "xhs"
+  ],
+  "timezone": "Asia/Shanghai",
+  "loginType": "qrcode",
+  "headless": false,
+  "maxNotes": 30,
+  "getComments": true,
+  "saveDataPath": "runtime/mediacrawler",
+  "agentEnabled": true,
+  "agentProvider": "auto",
+  "agentModel": "gpt-4o-mini",
+  "agentPrompt": "请基于输入的采集内容提炼高频行业主题，输出简洁、可执行的结构化中文情报。只使用输入中存在的信息，不要编造事实或链接。",
+  "autoAcceptCdpPrompt": true,
+  "cdpPromptTimeoutSeconds": 60,
+  "runner": "vendor/MediaCrawler/.venv/bin/python",
+  "runnerScript": "scripts/mediacrawler_runner.py",
+  "timeoutMinutes": 25,
+  "collectionWindowDays": 90,
+  "minimumLikes": 1000,
+  "collector": "xiaohongshu-mcp",
+  "xhsMcpUrl": "http://127.0.0.1:18060/mcp"
+}

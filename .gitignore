@@ -1,0 +1,18 @@
+# Local authentication material
+.env
+.env.*
+!.env.example
+config/*.env
+!config/production.example.env
+cookies.json
+cookies*.json
+
+# Runtime data, logs and generated review images
+runtime/*
+!runtime/.gitkeep
+
+# Local Python and Node artifacts
+__pycache__/
+*.py[cod]
+node_modules/
+.DS_Store

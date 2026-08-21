@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.daily-intelligence.mvp</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/node</string>
+    <string>/Users/zhuzijian/Documents/Codex/obsidian/server.mjs</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/zhuzijian/Documents/Codex/obsidian</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>PORT</key>
+    <string>4173</string>
+    <key>MEDIACRAWLER_ROOT</key>
+    <string>/Users/zhuzijian/Documents/Codex/2026-08-12/http-proxy-codex-env-http-proxy/work/MediaCrawler</string>
+    <key>MEDIACRAWLER_PYTHON</key>
+    <string>/Users/zhuzijian/Documents/Codex/2026-08-12/http-proxy-codex-env-http-proxy/work/MediaCrawler/.venv/bin/python</string>
+    <key>COLLECTION_DATA_PATH</key>
+    <string>/Users/zhuzijian/Documents/Codex/obsidian/runtime/mediacrawler</string>
+    <key>TWITTER_CLI_PATH</key>
+    <string>/Users/zhuzijian/.local/bin/twitter</string>
+    <key>PATH</key>
+    <string>/Users/zhuzijian/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>ProcessType</key>
+  <string>Interactive</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/zhuzijian/Documents/Codex/obsidian/runtime/logs/server.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/zhuzijian/Documents/Codex/obsidian/runtime/logs/server.stderr.log</string>
+</dict>
+</plist>

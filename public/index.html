@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>每日情报 · 行业动向智库</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主导航">
+        <div class="brand">每日情报</div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-nav="overview"><span class="nav-icon">⌘</span>今日总览</button>
+          <button class="nav-item" data-nav="settings"><span class="nav-icon">⚙</span>设置</button>
+        </nav>
+        <div class="sidebar-foot">内部试用版<br /><span>数据仅供团队研判</span></div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="搜索行业、关键词或内容" />
+          </label>
+          <div class="account"><span class="notification" aria-label="通知">♧</span><span class="avatar">张</span><span>张晓明</span><span class="chevron">⌄</span></div>
+        </header>
+
+        <section class="welcome-row">
+          <div>
+            <p class="eyebrow">2026年8月13日 · 星期四</p>
+            <h1 id="pageTitle">早上好，今天发生了什么？</h1>
+          </div>
+          <div class="update-status">数据更新于 <strong id="lastUpdated">--</strong><button class="sync-link" id="crawlerSync">同步采集结果</button></div>
+        </section>
+
+        <section class="summary-grid" aria-label="今日摘要">
+          <button class="summary-card" data-focus="contentCard"><span>本轮内容</span><strong id="newTrends">--</strong><small>已聚合的重点内容</small></button>
+          <button class="summary-card" data-focus="reviewCard"><span>待审核</span><strong class="orange" id="pendingReview">--</strong><small>审核后进入推送队列</small></button>
+          <button class="summary-card" data-focus="scheduleCard"><span>今日已推送</span><strong id="todayPushed">--</strong><small>07:00 / 12:00 / 18:00</small></button>
+        </section>
+
+        <section class="panel content-panel" id="contentCard">
+          <div class="panel-heading content-panel-heading"><div><h2>重点内容</h2><p>按平台、关键词和时间筛选已采集内容</p></div><div class="content-heading-actions"><div class="platform-tabs" role="tablist" aria-label="重点内容平台筛选"><button class="platform-tab active" data-platform="全部">全部</button><button class="platform-tab" data-platform="小红书">小红书</button><button class="platform-tab" data-platform="抖音">抖音</button><button class="platform-tab" data-platform="视频号">视频号</button><button class="platform-tab" data-platform="推特">推特</button></div><button class="text-action" id="refreshButton">刷新</button></div></div>
+          <div class="content-keywords" id="contentKeywords" aria-label="重点内容关键词筛选"></div>
+          <div class="content-time-filter" role="tablist" aria-label="内容时间范围"><span>时间范围</span><button type="button" class="time-range active" data-time-range="90">近3个月</button><button type="button" class="time-range" data-time-range="30">近30天</button><button type="button" class="time-range" data-time-range="7">近7天</button><button type="button" class="time-range" data-time-range="3">近3天</button></div>
+          <div id="contentList" class="content-list" aria-live="polite"></div>
+        </section>
+
+        <section class="dashboard-lower-grid">
+          <article class="panel review-panel" id="reviewCard">
+            <div class="panel-heading"><div><h2>待审核摘要</h2><p id="reviewStatus">审核后发送到指定渠道</p></div><span class="status-dot" id="reviewDot"></span></div>
+            <a class="review-image-link" id="reviewImageLink" href="/api/review/image.svg" target="_blank" rel="noreferrer"><img id="reviewImage" class="review-image" src="/api/review/image.svg" alt="每日情报一图流预览" data-fallback="/assets/review-preview.svg" /></a>
+            <h3 id="reviewTitle">--</h3>
+            <p id="reviewSubtitle" class="review-subtitle">--</p>
+            <div class="tag-list" id="reviewTags"></div>
+            <button class="primary-action" id="approveButton">审核通过并推送</button>
+          </article>
+
+          <section class="panel schedule-panel" id="scheduleCard">
+            <div class="schedule-copy"><h2>今日推送与分发</h2><p>一图流审核通过后，按渠道配置进入发送队列。</p></div>
+            <div class="schedule-items"><span class="schedule-item done">07:00 <em>已推送</em></span><span class="schedule-item">12:00 <em>待推送</em></span><span class="schedule-item">18:00 <em>待推送</em></span></div>
+            <div class="dispatch-channels" aria-label="一图流分发渠道">
+              <div><span>微信</span><em id="wechatDispatch">待配置</em></div>
+              <div><span>企业微信</span><em id="enterpriseWechatDispatch">待配置</em></div>
+              <div><span>飞书</span><em id="feishuDispatch">待配置</em></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="panel config-panel" id="settingsCard">
+          <div class="panel-heading"><div><h2>后端采集与 Agent</h2><p>搜索优先返回高赞内容；仅保留近3个月、点赞&gt;1000且与关键词相关的结果。</p></div><span class="config-state" id="schedulerState">读取中…</span></div>
+          <form id="automationForm" class="automation-form">
+            <div class="field keyword-field">
+              <span>关注主题</span>
+              <p class="field-hint">可多选；系统会自动扩展紧邻搜索词，结果仍按所选主题归类。</p>
+              <div class="keyword-catalog" id="keywordCatalog" aria-label="关注主题选择"></div>
+              <p class="keyword-selection-summary" id="keywordSelectionSummary"></p>
+              <details class="admin-topic-panel">
+                <summary>管理员 · 新增主题选项</summary>
+                <div class="admin-topic-form">
+                  <label><span>主题名称</span><input id="adminTopicLabel" maxlength="20" placeholder="例如：香器" /></label>
+                  <label><span>相关搜索词</span><input id="adminTopicKeywords" maxlength="120" placeholder="最多 3 个，用逗号分隔" /></label>
+                  <button class="secondary-action" id="addTopicButton" type="button">新增并选中</button>
+                </div>
+              </details>
+            </div>
+            <div class="field xhs-login-field">
+              <span>小红书账号</span>
+              <div class="xhs-login-row"><span class="xhs-login-status checking" id="xhsLoginStatus">正在检查登录状态…</span><button class="secondary-action" id="xhsLoginButton" type="button">获取登录二维码</button></div>
+            </div>
+            <div class="field"><span>自动运行时间</span><div class="time-options"><label><input type="checkbox" value="07:00" data-schedule />07:00</label><label><input type="checkbox" value="12:00" data-schedule />12:00</label><label><input type="checkbox" value="18:00" data-schedule />18:00</label></div></div>
+            <div class="field"><span>采集平台</span><div class="time-options"><label><input type="checkbox" value="xhs" data-platform />小红书</label><label><input type="checkbox" value="dy" data-platform />抖音</label><label><input type="checkbox" value="twitter" data-platform />推特</label></div><p class="field-hint">小红书使用本机 xiaohongshu-mcp v2.5.0；抖音使用原有采集流程；推特仅在选中后调用本机 twitter CLI。</p></div>
+            <div class="config-actions"><button class="secondary-action" type="submit">保存设置</button><button class="primary-action run-now" id="runNowButton" type="button">立即运行一次</button></div>
+          </form>
+          <details class="scheduler-log-panel">
+            <summary>运行日志</summary>
+            <pre class="scheduler-log" id="schedulerLog">等待调度器状态…</pre>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop auth-backdrop" id="authModal" hidden>
+      <form class="auth-modal" id="authForm">
+        <p class="modal-kicker">每日情报</p>
+        <h2>管理员登录</h2>
+        <p class="auth-hint">登录后才能查看采集内容、修改关键词和运行 Agent。</p>
+        <label class="auth-field"><span>管理员密码</span><input id="authPassword" type="password" autocomplete="current-password" required /></label>
+        <p class="auth-error" id="authError" role="alert"></p>
+        <button class="primary-action auth-submit" type="submit">登录</button>
+      </form>
+    </div>
+
+    <div class="modal-backdrop" id="detailModal" hidden>
+      <article class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" aria-label="关闭">×</button>
+        <img id="modalImage" class="modal-image" src="/assets/review-preview.svg" alt="" />
+        <p class="modal-kicker" id="modalMeta">--</p>
+        <h2 id="modalTitle">--</h2>
+        <p id="modalSummary">--</p>
+        <div class="tag-list" id="modalTags"></div>
+        <div class="modal-metrics" id="modalMetrics"></div>
+        <a class="primary-action modal-link" id="modalLink" href="#" target="_blank" rel="noreferrer">打开原文</a>
+      </article>
+    </div>
+    <div class="modal-backdrop" id="xhsLoginModal" hidden>
+      <article class="xhs-login-modal" role="dialog" aria-modal="true" aria-labelledby="xhsLoginModalTitle">
+        <button class="modal-close" id="xhsLoginModalClose" aria-label="关闭登录二维码">×</button>
+        <p class="modal-kicker">小红书账号</p>
+        <h2 id="xhsLoginModalTitle">扫码后继续采集</h2>
+        <div class="xhs-qr-panel" id="xhsQrPanel"><img id="xhsQrImage" alt="小红书登录二维码" /><p id="xhsQrMessage">请使用小红书 App 扫码登录</p></div>
+        <p class="xhs-login-modal-hint">登录状态确认后弹窗会自动关闭，并继续等待你重新运行采集。</p>
+      </article>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

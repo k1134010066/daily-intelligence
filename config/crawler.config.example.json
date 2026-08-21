@@ -1,0 +1,27 @@
+{
+  "description": "将本地爬虫输出转换为每日情报统一格式",
+  "endpoint": "http://localhost:4173/api/crawler/ingest",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Crawler-Token": "与 CRAWLER_INGEST_TOKEN 相同"
+  },
+  "body": {
+    "newTrends": 1,
+    "items": [
+      {
+        "id": "source-item-id",
+        "platform": "小红书",
+        "title": "内容标题",
+        "summary": "内容摘要",
+        "tags": ["关键词"],
+        "publishedAt": "2026-08-13 08:32",
+        "likes": 1246,
+        "collects": 892,
+        "comments": 156,
+        "image": "https://example.com/cover.jpg",
+        "sourceUrl": "https://example.com/original"
+      }
+    ]
+  }
+}

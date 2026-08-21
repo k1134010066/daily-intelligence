@@ -1,0 +1,12 @@
+{
+  "root": "vendor/MediaCrawler",
+  "platforms": {
+    "xhs": "小红书",
+    "dy": "抖音"
+  },
+  "dataDirs": {
+    "xhs": "xhs",
+    "dy": "douyin"
+  },
+  "maxItems": 30
+}
